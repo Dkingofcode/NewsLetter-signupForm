@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import icon from './assets/icon-list.svg';  
 import illustration from './assets/illustration-sign-up-desktop.svg';
+import illustrationmobile from './assets/illustration-sign-up-mobile.svg';
 
 function App() {
+  const [screen, setScreen] = useState(false);
+  const size = window.location;
+
+   useEffect(() => {
+     if(size == 690) {
+      setScreen(true);
+     }
+   });
 
   return (
     <>
@@ -25,7 +34,7 @@ function App() {
       </div>
 
       <aside>
-        <img src={illustration} alt="image" />
+        <img src={screen ? illustration : illustrationmobile} alt="image" />
       </aside>
 
       </div>
